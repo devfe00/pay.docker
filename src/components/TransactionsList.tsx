@@ -1,39 +1,10 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-
-interface Transaction {
-  id: string;
-  amount: string;
-  currency: string;
-  date: string;
-  status: "success" | "pending" | "failed";
-}
+import { useContext } from "react";
+import { TransactionContext } from "../context/TransactionContext";
 
 const TransactionsList = () => {
-  // Dados de exemplo para demonstração
-  const transactions: Transaction[] = [
-    {
-      id: "tx_123456789",
-      amount: "19,99",
-      currency: "BRL",
-      date: "05/05/2025 10:30:15",
-      status: "success"
-    },
-    {
-      id: "tx_987654321",
-      amount: "49,99",
-      currency: "BRL",
-      date: "04/05/2025 15:22:45",
-      status: "success"
-    },
-    {
-      id: "tx_456789123",
-      amount: "9,99",
-      currency: "BRL",
-      date: "03/05/2025 09:15:30",
-      status: "failed"
-    }
-  ];
+  const { transactions } = useContext(TransactionContext);
 
   const getStatusColor = (status: string) => {
     switch (status) {

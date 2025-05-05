@@ -12,12 +12,15 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useContext } from "react";
+import { TransactionContext } from "../context/TransactionContext";
 
 const PaymentForm = () => {
   const { toast } = useToast();
   const [amount, setAmount] = useState<string>("19,99");
   const [currency, setCurrency] = useState<string>("brl");
   const [loading, setLoading] = useState<boolean>(false);
+  const { addTransaction } = useContext(TransactionContext);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,6 +29,19 @@ const PaymentForm = () => {
     // Simular chamada de API
     setTimeout(() => {
       setLoading(false);
+      
+      // Criar nova transação
+      const newTransaction = {
+        id: "tx_" + Math.random().toString(36).substr(2, 9),
+        amount: amount,
+        currency: "BRL",
+        date: new Date().toLocaleDateString("pt-BR") + " " + new Date().toLocaleTimeString("pt-BR"),
+        status: "success" as const
+      };
+      
+      // Adicionar a transação à lista
+      addTransaction(newTransaction);
+      
       toast({
         title: "Pagamento processado",
         description: `Pagamento de R$ ${amount} processado com sucesso`,
