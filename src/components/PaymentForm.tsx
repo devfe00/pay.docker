@@ -15,20 +15,20 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 const PaymentForm = () => {
   const { toast } = useToast();
-  const [amount, setAmount] = useState<string>("19.99");
-  const [currency, setCurrency] = useState<string>("usd");
+  const [amount, setAmount] = useState<string>("19,99");
+  const [currency, setCurrency] = useState<string>("brl");
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate API call
+    // Simular chamada de API
     setTimeout(() => {
       setLoading(false);
       toast({
-        title: "Payment processed",
-        description: `Successfully processed payment of ${amount} ${currency.toUpperCase()}`,
+        title: "Pagamento processado",
+        description: `Pagamento de R$ ${amount} processado com sucesso`,
       });
     }, 1500);
   };
@@ -36,41 +36,39 @@ const PaymentForm = () => {
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
-        <CardTitle>Process Payment</CardTitle>
+        <CardTitle>Processar Pagamento</CardTitle>
         <CardDescription>
-          Test your Stripe integration by simulating a payment.
+          Teste sua integração com o Stripe simulando um pagamento.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="amount">Amount</Label>
+              <Label htmlFor="amount">Valor</Label>
               <Input
                 id="amount"
-                type="number"
-                step="0.01"
-                min="0.01"
+                type="text"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                placeholder="19.99"
+                placeholder="19,99"
                 required
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="currency">Currency</Label>
+              <Label htmlFor="currency">Moeda</Label>
               <Select
                 value={currency}
                 onValueChange={(value) => setCurrency(value)}
               >
                 <SelectTrigger id="currency">
-                  <SelectValue placeholder="Select currency" />
+                  <SelectValue placeholder="Selecione a moeda" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="usd">USD</SelectItem>
-                  <SelectItem value="eur">EUR</SelectItem>
-                  <SelectItem value="gbp">GBP</SelectItem>
-                  <SelectItem value="brl">BRL</SelectItem>
+                  <SelectItem value="brl">BRL (Real)</SelectItem>
+                  <SelectItem value="usd">USD (Dólar)</SelectItem>
+                  <SelectItem value="eur">EUR (Euro)</SelectItem>
+                  <SelectItem value="gbp">GBP (Libra)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -80,7 +78,7 @@ const PaymentForm = () => {
             type="submit"
             disabled={loading}
           >
-            {loading ? "Processing..." : "Process Payment"}
+            {loading ? "Processando..." : "Processar Pagamento"}
           </Button>
         </form>
       </CardContent>

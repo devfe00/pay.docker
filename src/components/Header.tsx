@@ -17,8 +17,8 @@ const Header = () => {
             className="mr-2"
             onClick={() => {
               toast({
-                title: "Documentation",
-                description: "Consult the Docker documentation for setup instructions."
+                title: "Documentação",
+                description: "Consulte a documentação Docker para instruções de configuração."
               });
             }}
           >
@@ -28,12 +28,12 @@ const Header = () => {
             className="bg-stripe-purple hover:bg-opacity-90"
             onClick={() => {
               toast({
-                title: "Need help?",
-                description: "Contact support@stripedock.com"
+                title: "Precisa de ajuda?",
+                description: "Entre em contato através de suporte@stripedock.com"
               });
             }}
           >
-            Support
+            Suporte
           </Button>
         </div>
       </div>

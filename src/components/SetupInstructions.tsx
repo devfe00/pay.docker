@@ -6,55 +6,56 @@ const SetupInstructions = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Docker Setup</CardTitle>
+        <CardTitle>Configuração Docker</CardTitle>
         <CardDescription>
-          Quick guide to get your payment API running with Docker
+          Guia rápido para rodar sua API de pagamentos com Docker
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2">
-          <h3 className="font-semibold">1. Get your Stripe API key</h3>
+          <h3 className="font-semibold">1. Obtenha sua chave de API do Stripe</h3>
           <p className="text-sm text-muted-foreground">
-            Create a Stripe account and get your API keys from the dashboard.
+            Crie uma conta no Stripe e obtenha suas chaves de API no painel.
           </p>
         </div>
         
         <div className="space-y-2">
-          <h3 className="font-semibold">2. Create Dockerfile</h3>
+          <h3 className="font-semibold">2. Crie o Dockerfile</h3>
           <div className="bg-muted rounded-md p-3 font-mono text-xs">
             <pre>
-              {`# Use Node.js image
+              {`# Use a imagem base do Node.js
 FROM node:14
 
-# Create working directory
+# Crie e defina o diretório de trabalho
 WORKDIR /app
 
-# Copy package files
+# Copie os arquivos package.json e .env
 COPY package*.json ./
+COPY .env ./
 
-# Install dependencies
+# Instale as dependências
 RUN npm install
 
-# Copy source files
+# Copie os arquivos do projeto
 COPY . .
 
-# Expose port
+# Exponha a porta
 EXPOSE 3000
 
-# Start application
+# Inicie a aplicação
 CMD ["node", "server.js"]`}
             </pre>
           </div>
         </div>
         
         <div className="space-y-2">
-          <h3 className="font-semibold">3. Build and run container</h3>
+          <h3 className="font-semibold">3. Construa e execute o container</h3>
           <div className="bg-muted rounded-md p-3 font-mono text-xs">
             <pre>
-              {`# Build image
+              {`# Construa a imagem
 docker build -t payment-api .
 
-# Run container
+# Execute o container
 docker run -p 3000:3000 payment-api`}
             </pre>
           </div>
@@ -62,7 +63,7 @@ docker run -p 3000:3000 payment-api`}
         
         <div className="flex justify-center mt-4">
           <Button className="bg-stripe-purple hover:bg-opacity-90" onClick={() => window.open("https://stripe.com/docs/api", "_blank")}>
-            Stripe API Documentation
+            Documentação da API Stripe
           </Button>
         </div>
       </CardContent>

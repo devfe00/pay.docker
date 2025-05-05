@@ -10,27 +10,27 @@ interface Transaction {
 }
 
 const TransactionsList = () => {
-  // Sample data for demonstration
+  // Dados de exemplo para demonstração
   const transactions: Transaction[] = [
     {
       id: "tx_123456789",
-      amount: "19.99",
-      currency: "USD",
-      date: "2025-05-05 10:30:15",
+      amount: "19,99",
+      currency: "BRL",
+      date: "05/05/2025 10:30:15",
       status: "success"
     },
     {
       id: "tx_987654321",
-      amount: "49.99",
-      currency: "USD",
-      date: "2025-05-04 15:22:45",
+      amount: "49,99",
+      currency: "BRL",
+      date: "04/05/2025 15:22:45",
       status: "success"
     },
     {
       id: "tx_456789123",
-      amount: "9.99",
-      currency: "EUR",
-      date: "2025-05-03 09:15:30",
+      amount: "9,99",
+      currency: "BRL",
+      date: "03/05/2025 09:15:30",
       status: "failed"
     }
   ];
@@ -48,12 +48,25 @@ const TransactionsList = () => {
     }
   };
 
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case "success":
+        return "sucesso";
+      case "pending":
+        return "pendente";
+      case "failed":
+        return "falhou";
+      default:
+        return status;
+    }
+  };
+
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Recent Transactions</CardTitle>
+        <CardTitle>Transações Recentes</CardTitle>
         <CardDescription>
-          Your most recent payment transactions
+          Suas transações de pagamento mais recentes
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -62,8 +75,8 @@ const TransactionsList = () => {
             <thead>
               <tr className="border-b bg-muted/50">
                 <th className="py-2 px-4 text-left font-medium">ID</th>
-                <th className="py-2 px-4 text-left font-medium">Amount</th>
-                <th className="py-2 px-4 text-left font-medium">Date</th>
+                <th className="py-2 px-4 text-left font-medium">Valor</th>
+                <th className="py-2 px-4 text-left font-medium">Data</th>
                 <th className="py-2 px-4 text-left font-medium">Status</th>
               </tr>
             </thead>
@@ -71,11 +84,11 @@ const TransactionsList = () => {
               {transactions.map((transaction) => (
                 <tr key={transaction.id} className="border-b">
                   <td className="py-2 px-4 font-mono text-xs">{transaction.id}</td>
-                  <td className="py-2 px-4">{transaction.amount} {transaction.currency}</td>
+                  <td className="py-2 px-4">R$ {transaction.amount}</td>
                   <td className="py-2 px-4">{transaction.date}</td>
                   <td className="py-2 px-4">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(transaction.status)}`}>
-                      {transaction.status}
+                      {getStatusText(transaction.status)}
                     </span>
                   </td>
                 </tr>
