@@ -1,73 +1,59 @@
-# Welcome to your Lovable project
+API de Processamento de Pagamentos com Stripe
 
-## Project info
+Objetivo: desenvolver uma API que permite processar pagamentos utilizando o Stripe, uma plataforma de pagamentos online. A API simula um fluxo básico de pagamento de produtos/serviços.
 
-**URL**: https://lovable.dev/projects/46473e3c-b764-40ae-acd6-fddbaae9f910
 
-## How can I edit this code?
+##Tecnologias Utilizadas
 
-There are several ways of editing your application.
+Node.js: Ambiente de execução JavaScript.
+Express.js: Framework minimalista para criação da API.
+Stripe API: Serviço para processar pagamentos.
+Docker: Containerização da aplicação.
 
-**Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/46473e3c-b764-40ae-acd6-fddbaae9f910) and start prompting.
+##Pré-requisitos
 
-Changes made via Lovable will be committed automatically to this repo.
 
-**Use your preferred IDE**
+Conta no Stripe: Você precisa de uma conta no Stripe para obter a chave da API e integrar a plataforma. Crie uma conta em Stripe.
+Docker: Instale o Docker para rodar a aplicação dentro de containers.
+Estrutura do Projeto
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+/payment-api
+│
+├── Dockerfile
+├── .dockerignore
+├── package.json
+├── server.js
+├── routes/
+│   └── paymentRoutes.js
+└── controllers/
+    └── paymentController.js
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Passo a Passo
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. Criar o Projeto Node.js
+Inicialize o projeto e instale as dependências necessárias.
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. Criar o Servidor Express
+Configure o servidor Express para gerenciar as requisições.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+3. Configurar as Rotas de Pagamento
+Defina as rotas para processar os pagamentos.
 
-**Edit a file directly in GitHub**
+4. Implementar a Lógica de Pagamento
+Implemente a lógica necessária para interagir com a Stripe API e processar pagamentos.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+5. Criar o Dockerfile
+Crie um Dockerfile para containerizar a aplicação.
 
-**Use GitHub Codespaces**
+6. Construir e Rodar o Contêiner
+Construa a imagem Docker e execute a aplicação em um contêiner.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Testando a API
+Use ferramentas como Postman ou cURL para testar a API.
 
-## What technologies are used for this project?
+Conclusão
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/46473e3c-b764-40ae-acd6-fddbaae9f910) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Este projeto ensina como integrar o Stripe com um back-end Node.js e rodar a aplicação dentro de um contêiner Docker. Agora você pode expandir a API, adicionar mais recursos e aprimorar a segurança e validação de dados.
