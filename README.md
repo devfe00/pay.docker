@@ -16,20 +16,6 @@ Docker: Containerização da aplicação.
 
 Conta no Stripe: Você precisa de uma conta no Stripe para obter a chave da API e integrar a plataforma. Crie uma conta em Stripe.
 Docker: Instale o Docker para rodar a aplicação dentro de containers.
-Estrutura do Projeto
-
-/payment-api
-│
-├── Dockerfile
-├── .dockerignore
-├── package.json
-├── server.js
-├── routes/
-│   └── paymentRoutes.js
-└── controllers/
-    └── paymentController.js
-
-
 
 Passo a Passo
 
